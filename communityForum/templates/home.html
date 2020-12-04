@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <header class="banner">
+        <h1 class="header-text">
+            Welcome to the community forum {{ current_user.username }}!
+            <br>
+            ¡Bienvenidos al foro de la comunidad {{ current_user.username }} ! 
+        </h1>
+    </header>
+<br>
+    {% if current_user.is_authenticated %}
+        {% for post in user_posts %}
+            <div class="container">
+                <h3>
+                    <a href="{{ url_for('post_detail', post_id = post.id) }}">{{ post.title }}</a>
+                </h3>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+    <h2>Login or Register today to see the forum</h2>
+
+    {% endif %}
+{% endblock content %}

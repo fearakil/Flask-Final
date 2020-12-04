@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>
+            Comment on blog post
+        </h1>
+        <form method="POST">
+            {{ comment_form.hidden_tag() }}
+            <div class="form-group">
+                <fieldset>
+                    {{ comment_form.text.label }}
+                    {{ comment_form.text(class = "form-control", placeholder = "Comment") }}
+                </fieldset>
+
+                <br>
+                {{ comment_form.submit(class = "btn btn-success") }}
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

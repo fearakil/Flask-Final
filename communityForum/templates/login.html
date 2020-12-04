@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Login Here</h1>
+        <form method="POST">
+            {{ login_form.hidden_tag() }}
+            <div class="form-group">
+                <fieldset>
+                    {{ login_form.email.label }}
+                    {{ login_form.email(class="form-control", placeholder = "Email Here...")}}
+                </fieldset>
+                <fieldset>
+                    {{ login_form.password.label }}
+                    {{ login_form.password(class = "form-control", placeholder = "Password Here...") }}
+                </fieldset>
+                <br>
+                {{ login_form.submit(class="btn btn-success btn-lg btn-block") }}
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

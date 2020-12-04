@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+
+        <a href="{{ url_for('home') }}">
+            <button class="btn btn-primary">Back to Home</button>
+        </a>
+
+        <h1>This post belongs to: {{ post.author.username }}</h1>
+        <hr>
+        <h3>Title: {{ post.title }}</h3>
+        <p>Content: {{ post.content }}</p>
+
+        <blockquote>Date Created: {{ post.date_created }}</blockquote>
+
+       
+    
+
+
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+    Delete
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Are you sure you want to delete?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Deleted posts cannot be recovered.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('post_delete', post_id = post.id ) }}" method="post">
+              <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+        <a href="{{ url_for('post_update', post_id = post.id) }}">
+            <button class="btn btn-primary">Update this post</button>
+        </a>
+
+        <a href="{{ url_for('post_comment', post_id = post.id) }}">
+            <button class="btn btn-primary">Comment on this post</button>
+        </a>
+
+
+    </div>
+
+{% endblock content %}
